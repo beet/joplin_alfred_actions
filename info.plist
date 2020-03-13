@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.beet.joplin_alfred_actions</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Mark Beattie</string>
+	<key>description</key>
+	<string>Handy extensions for working with Joplin</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Jopliin Actions</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>jwl</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/joplin"
+
+print Joplin::WikiLinks.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Insert wiki link to the selected Joplin page</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>BD9E31D7-F171-4174-B726-A44C2DAE83EC</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Handy extensions for interaction with Joplin through Alfred.
+
+See https://github.com/beet/joplin_alfred_actions for a deatailed readme.</string>
+	<key>uidata</key>
+	<dict>
+		<key>793F4654-386B-4CE2-B264-E21D3CF2C657</key>
+		<dict>
+			<key>xpos</key>
+			<integer>270</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
+		<dict>
+			<key>note</key>
+			<string>Insert a wiki link to any text note with fuzzy search by heading</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>base_directory</key>
+		<string>/Library/Mobile Documents/com~apple~CloudDocs/Docs/Joplin</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>base_directory</string>
+	</array>
+	<key>version</key>
+	<string>0.1.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/beet/jopin_noteplan_actions</string>
+</dict>
+</plist>
