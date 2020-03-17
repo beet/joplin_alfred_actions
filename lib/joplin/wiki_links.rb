@@ -13,9 +13,7 @@ module Joplin
     def alfred_items
       [].tap do |array|
         for_each_note do |note_file|
-          # Might get to a factory interface one day, but in the meantime
-          # maybe .is_note? should encpsulate this?
-          next if note_file.is_metadata? || note_file.is_attachment?
+          next unless note_file.is_note?
 
           array << Alfred::Item.new(
             note_file.heading,
