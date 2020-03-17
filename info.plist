@@ -8,11 +8,50 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>48148733-F1FB-43B4-BA8C-13D0E53B8218</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F6EBA913-91EB-494F-A242-14D16271C547</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7EAF6C64-1E5D-43DF-9705-42AE080BE8F7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A4119268-FBD7-4F55-8EA8-4CAF95E2B8F4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F52D1640-2185-41FD-8D23-5797557211EE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4181BF5B-700B-4D7E-BC1C-D34DDAC64CB6</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -101,6 +140,203 @@ print Joplin::WikiLinks.new.json</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/Marked 2.app</string>
+				<key>sourcefile</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>A4119268-FBD7-4F55-8EA8-4CAF95E2B8F4</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>jmk</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/joplin"
+
+print Joplin::NotesList.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Open Joplin page in Marked</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7EAF6C64-1E5D-43DF-9705-42AE080BE8F7</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>path</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.revealfile</string>
+			<key>uid</key>
+			<string>F6EBA913-91EB-494F-A242-14D16271C547</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>jrf</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/joplin"
+
+print Joplin::NotesList.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Reveal Joplin page in Finder</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>48148733-F1FB-43B4-BA8C-13D0E53B8218</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>path</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>4181BF5B-700B-4D7E-BC1C-D34DDAC64CB6</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>jba</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/joplin"
+
+print Joplin::NotesList.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Browse Joplin page in Alfred</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F52D1640-2185-41FD-8D23-5797557211EE</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Handy extensions for interaction with Joplin through Alfred.
@@ -108,12 +344,44 @@ print Joplin::WikiLinks.new.json</string>
 See https://github.com/beet/joplin_alfred_actions for a deatailed readme.</string>
 	<key>uidata</key>
 	<dict>
+		<key>4181BF5B-700B-4D7E-BC1C-D34DDAC64CB6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>235</integer>
+			<key>ypos</key>
+			<integer>585</integer>
+		</dict>
+		<key>48148733-F1FB-43B4-BA8C-13D0E53B8218</key>
+		<dict>
+			<key>note</key>
+			<string>Reveal selected note in Finder</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>405</integer>
+		</dict>
 		<key>793F4654-386B-4CE2-B264-E21D3CF2C657</key>
 		<dict>
 			<key>xpos</key>
-			<integer>270</integer>
+			<integer>220</integer>
 			<key>ypos</key>
+			<integer>45</integer>
+		</dict>
+		<key>7EAF6C64-1E5D-43DF-9705-42AE080BE8F7</key>
+		<dict>
+			<key>note</key>
+			<string>Open selected note in Marked 2</string>
+			<key>xpos</key>
 			<integer>40</integer>
+			<key>ypos</key>
+			<integer>225</integer>
+		</dict>
+		<key>A4119268-FBD7-4F55-8EA8-4CAF95E2B8F4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>225</integer>
+			<key>ypos</key>
+			<integer>225</integer>
 		</dict>
 		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
 		<dict>
@@ -122,7 +390,23 @@ See https://github.com/beet/joplin_alfred_actions for a deatailed readme.</strin
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
+			<integer>45</integer>
+		</dict>
+		<key>F52D1640-2185-41FD-8D23-5797557211EE</key>
+		<dict>
+			<key>note</key>
+			<string>Browse selected note in Alfred</string>
+			<key>xpos</key>
 			<integer>40</integer>
+			<key>ypos</key>
+			<integer>585</integer>
+		</dict>
+		<key>F6EBA913-91EB-494F-A242-14D16271C547</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>405</integer>
 		</dict>
 	</dict>
 	<key>variables</key>

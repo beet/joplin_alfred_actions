@@ -1,7 +1,7 @@
 require "spec_helper"
 
-RSpec.describe Joplin::WikiLinks do
-  subject(:wiki_links) { Joplin::WikiLinks.new }
+RSpec.describe Joplin::NotesList do
+  subject(:wiki_links) { Joplin::NotesList.new }
 
   context "#alfred_items" do
     let(:note_file_1) {
@@ -9,39 +9,39 @@ RSpec.describe Joplin::WikiLinks do
         Joplin::NoteFile,
         heading: heading_1,
         basename: basename_1,
-        markdown_link: markdown_link_1,
+        filename: filename_1,
         is_note?: true
       )
     }
     let(:heading_1) { double("heading_1") }
     let(:basename_1) { double("basename_1") }
-    let(:markdown_link_1) { double("markdown_link_1") }
+    let(:filename_1) { double("filename_1") }
 
     let(:note_file_2) {
       double(
         Joplin::NoteFile,
         heading: heading_2,
         basename: basename_2,
-        markdown_link: markdown_link_2,
+        filename: filename_2,
         is_note?: true
       )
     }
     let(:heading_2) { double("heading_2") }
     let(:basename_2) { double("basename_2") }
-    let(:markdown_link_2) { double("markdown_link_2") }
+    let(:filename_2) { double("filename_2") }
 
     let(:note_file_3) {
       double(
         Joplin::NoteFile,
         heading: heading_3,
         basename: basename_3,
-        markdown_link: markdown_link_3,
+        filename: filename_3,
         is_note?: false
       )
     }
     let(:heading_3) { double("heading_3") }
     let(:basename_3) { double("basename_3") }
-    let(:markdown_link_3) { double("markdown_link_3") }
+    let(:filename_3) { double("filename_3") }
 
     let(:alfred_item_1) { double(Alfred::Item, title: title_1) }
     let(:title_1) { "title_B" }
@@ -54,7 +54,7 @@ RSpec.describe Joplin::WikiLinks do
         .with(
           heading_1,
           subtitle: basename_1,
-          arg: markdown_link_1
+          arg: filename_1
         )
         .and_return(alfred_item_1)
 
@@ -62,7 +62,7 @@ RSpec.describe Joplin::WikiLinks do
         .with(
           heading_2,
           subtitle: basename_2,
-          arg: markdown_link_2
+          arg: filename_2
         )
         .and_return(alfred_item_2)
 
