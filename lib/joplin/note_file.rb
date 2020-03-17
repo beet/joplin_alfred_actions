@@ -28,6 +28,10 @@ module Joplin
       @contents ||= File.read(filename)
     end
 
+    def is_note?
+      !is_metadata? && !is_attachment?
+    end
+
     def is_metadata?
       content_lines.first.match?(/^id:\s/)
     end
