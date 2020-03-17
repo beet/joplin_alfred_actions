@@ -61,6 +61,38 @@ RSpec.describe Joplin::NoteFile do
     end
   end
 
+  context "#is_note?" do
+    before do
+      allow(note_file).to receive(:is_metadata?).and_return(is_metadata)
+      allow(note_file).to receive(:is_attachment?).and_return(is_attachment)
+    end
+
+    let(:is_metadata) { false }
+    let(:is_attachment) { false }
+
+    context "when the note file is metadata" do
+      let(:is_metadata) { true }
+
+      it 'is false' do
+        expect(note_file).to_not be_is_note
+      end
+    end
+
+    context "when the note file is an attachment" do
+      let(:is_attachment) { true }
+
+      it 'is false' do
+        expect(note_file).to_not be_is_note
+      end
+    end
+
+    context "when the note file is not metadata or an attachment" do
+      it 'is true' do
+        expect(note_file).to be_is_note
+      end
+    end
+  end
+
   context "#heading" do
     let(:file_contents) { double("file_contents") }
     let(:heading_component) { double(Joplin::NoteComponents::Heading, contents: heading_contents) }
