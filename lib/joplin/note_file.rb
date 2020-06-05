@@ -46,6 +46,10 @@ module Joplin
       "[#{heading}](:/#{id})"
     end
 
+    def has_heading?
+      heading != ""
+    end
+
     def heading
       NoteComponents::Heading.new(contents).contents
     end

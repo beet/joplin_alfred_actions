@@ -109,6 +109,28 @@ RSpec.describe Joplin::NoteFile do
     end
   end
 
+  context "#has_heading?" do
+    before do
+      allow(note_file).to receive(:heading).and_return(heading)
+    end
+
+    context "when the heading has a value" do
+      let(:heading) { "heading" }
+
+      it 'is true' do
+        expect(note_file.has_heading?).to be_truthy
+      end
+    end
+
+    context "when the heading is blank" do
+      let(:heading) { "" }
+
+      it 'is false' do
+        expect(note_file.has_heading?).to be_falsey
+      end
+    end
+  end
+
   context "#basename" do
     it 'extracts the basename from the filename' do
       expect(note_file.basename).to eq(basename)
