@@ -173,4 +173,55 @@ RSpec.describe Joplin::NoteFile do
       expect(note_file.markdown_link).to eq(markdown_link)
     end
   end
+
+  context "comparisons" do
+    let(:note1) { Joplin::NoteFile.new("") }
+    let(:note2) { Joplin::NoteFile.new("") }
+
+    context "sort" do
+      before do
+        allow(note1).to receive(:heading).and_return("Zelta")
+        allow(note2).to receive(:heading).and_return("Alpha")
+      end
+
+      it 'uses the note heading' do
+        expect([note1, note2].sort).to eq([note2, note1])
+      end
+    end
+
+    context "equality" do
+      before do
+        allow(note1).to receive(:id).and_return(note1_id)
+        allow(note2).to receive(:id).and_return(note2_id)
+      end
+
+      context "for notes with the same ID" do
+        let(:note1_id) { "123" }
+        let(:note2_id) { "123" }
+
+        it 'is true' do
+          expect(note1 == note2).to eq(true)
+        end
+      end
+
+      context "for notes with different IDs" do
+        let(:note1_id) { "123" }
+        let(:note2_id) { "234" }
+
+        it 'is false' do
+          expect(note1 == note2).to eq(false)
+        end
+      end
+    end
+
+    context "uniqueness" do
+      before do
+        allow(note1).to receive(:id).and_return("123")
+      end
+
+      it 'removes duplicates with the same ID' do
+        expect([note1, note1, note1].uniq).to eq([note1])
+      end
+    end
+  end
 end

@@ -16,7 +16,7 @@ PORO to encapsulate a note file:
 =end
 module Joplin
   class NoteFile
-    EXT_NAME = ".md"
+    include Comparable
 
     attr_reader :filename
 
@@ -60,6 +60,14 @@ module Joplin
 
     def basename
       File.basename(filename)
+    end
+
+    def <=>(other_note)
+      heading <=> other_note.heading
+    end
+
+    def ==(other_note)
+      id == other_note.id
     end
 
     private
