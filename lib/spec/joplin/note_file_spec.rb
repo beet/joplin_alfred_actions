@@ -87,8 +87,24 @@ RSpec.describe Joplin::NoteFile do
     end
 
     context "when the note file is not metadata or an attachment" do
-      it 'is true' do
-        expect(note_file).to be_is_note
+      before do
+        allow(note_file).to receive(:has_heading?).and_return(has_heading)
+      end
+
+      context "when it does not have a heading" do
+        let(:has_heading) { false }
+
+        it 'is false' do
+          expect(note_file).to_not be_is_note
+        end
+      end
+
+      context "when it has a heading" do
+        let(:has_heading) { true }
+
+        it 'is true' do
+          expect(note_file).to be_is_note
+        end
       end
     end
   end

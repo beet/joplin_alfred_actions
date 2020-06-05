@@ -29,7 +29,7 @@ module Joplin
     end
 
     def is_note?
-      !is_metadata? && !is_attachment?
+      !is_metadata? && !is_attachment?  && has_heading?
     end
 
     def is_metadata?
