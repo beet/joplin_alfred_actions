@@ -51,7 +51,7 @@ module Joplin
     end
 
     def id
-      basename.gsub(EXT_NAME, "")
+      basename.gsub(Joplin::Base::EXT_NAME, "")
     end
 
     def basename

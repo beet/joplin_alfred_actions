@@ -1,6 +1,6 @@
 RSpec.describe Joplin::NoteFile do
   let(:filename) { "foo/bar/#{basename}" }
-  let(:basename) { "#{id}#{Joplin::NoteFile::EXT_NAME}" }
+  let(:basename) { "#{id}#{Joplin::Base::EXT_NAME}" }
   let(:id) { "8775cd41e1d84ac2b631473f88fd8095" }
 
   subject(:note_file) { Joplin::NoteFile.new(filename) }
