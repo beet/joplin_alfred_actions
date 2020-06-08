@@ -174,6 +174,22 @@ RSpec.describe Joplin::NoteFile do
     end
   end
 
+  context "#child_notes" do
+    let(:note_contents) { double("note_contents") }
+    let(:note_links_component) { double(Joplin::NoteComponents::NoteLinks, child_notes: child_notes) }
+    let(:child_notes) { double("child_notes") }
+
+    before do
+      allow(note_file).to receive(:contents).and_return(note_contents)
+
+      allow(Joplin::NoteComponents::NoteLinks).to receive(:new).with(note_file.contents).and_return(note_links_component)
+    end
+
+    it 'is a collection of child notes provided by Joplin::NoteComponents::NoteLinks#child_notes' do
+      expect(note_file.child_notes).to eq(child_notes)
+    end
+  end
+
   context "comparisons" do
     let(:note1) { Joplin::NoteFile.new("") }
     let(:note2) { Joplin::NoteFile.new("") }

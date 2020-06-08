@@ -62,6 +62,11 @@ module Joplin
       File.basename(filename)
     end
 
+    # All notes that this note links to
+    def child_notes
+      @child_notes ||= NoteComponents::NoteLinks.new(contents).child_notes
+    end
+
     def <=>(other_note)
       heading <=> other_note.heading
     end
