@@ -35,4 +35,33 @@ RSpec.describe Joplin::TableOfContents do
       expect(Joplin::TableOfContents.find_note(id).object_id).to eq(Joplin::TableOfContents.find_note(id).object_id)
     end
   end
+
+  context "process" do
+    let(:path) { "/Users/foo/Library/Mobile Documents/com~apple~CloudDocs/Docs/Joplin/#{id}.md" }
+    let(:note_file) { double(Joplin::NoteFile) }
+    let(:toc_processor) { double(Joplin::TableOfContents::TocProcessor) }
+
+    before do
+      allow(Joplin::TableOfContents).to receive(:find_note).with(id).and_return(note_file)
+
+      allow(Joplin::TableOfContents::TocProcessor).to receive(:new).with(note_file).and_return(toc_processor)
+    end
+
+    it 'extracts the note ID from the path argument passes the matching note into Joplin::TableOfContents::TocProcessor' do
+      expect(toc_processor).to receive(:process)
+
+      Joplin::TableOfContents.process(path)
+    end
+
+
+    context "when the processor takes more than #{Joplin::TableOfContents::TIMEOUT_SECONDS} seconds" do
+      before do
+        allow(toc_processor).to receive(:process).and_raise(Timeout::Error)
+      end
+
+      it 'times out and returns an error message' do
+        expect(Joplin::TableOfContents.process(path)).to eq("Failed to generate TOC in #{Joplin::TableOfContents::TIMEOUT_SECONDS} seconds")
+      end
+    end
+  end
 end
