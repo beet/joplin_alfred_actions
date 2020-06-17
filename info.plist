@@ -599,7 +599,7 @@ See https://github.com/beet/joplin_alfred_actions for a deatailed readme.</strin
 		<string>base_directory</string>
 	</array>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/beet/jopin_noteplan_actions</string>
 </dict>
