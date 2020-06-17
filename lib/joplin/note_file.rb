@@ -16,7 +16,7 @@ PORO to encapsulate a note file:
 =end
 module Joplin
   class NoteFile
-    EXT_NAME = ".md"
+    include Comparable
 
     attr_reader :filename
 
@@ -29,7 +29,7 @@ module Joplin
     end
 
     def is_note?
-      !is_metadata? && !is_attachment?
+      !is_metadata? && !is_attachment?  && has_heading?
     end
 
     def is_metadata?
@@ -46,16 +46,33 @@ module Joplin
       "[#{heading}](:/#{id})"
     end
 
+    def has_heading?
+      heading != ""
+    end
+
     def heading
       NoteComponents::Heading.new(contents).contents
     end
 
     def id
-      basename.gsub(EXT_NAME, "")
+      basename.gsub(Joplin::Base::EXT_NAME, "")
     end
 
     def basename
       File.basename(filename)
+    end
+
+    # All notes that this note links to
+    def child_notes
+      @child_notes ||= NoteComponents::NoteLinks.new(contents).child_notes
+    end
+
+    def <=>(other_note)
+      heading <=> other_note.heading
+    end
+
+    def ==(other_note)
+      id == other_note.id
     end
 
     private

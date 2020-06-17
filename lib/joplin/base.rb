@@ -11,6 +11,8 @@ note files and yields a Joplin::NoteFile instance.
 =end
 module Joplin
   class Base
+    EXT_NAME = ".md"
+
     attr_reader :alfred_script_filter
 
     def initialize
@@ -32,7 +34,7 @@ module Joplin
     end
 
     def notes_directory
-      "#{base_directory}/*.md"
+      "#{base_directory}/*#{EXT_NAME}"
     end
 
     def base_directory
