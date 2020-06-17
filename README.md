@@ -59,3 +59,15 @@ Usage:
 * Bring up Alfred and enter `jba` 
 * Search for the desired note, and hit enter after selecting it
 * Press the right arrow on the keyboard to bring up Alfred's file actions
+
+## Table Of Contents
+
+Keyword: `jtoc`
+
+Select a Joplin note with fuzzy search by title, and it will generate a nested table of contents of other notes that it links to, and their child notes etc. recursively up to 5 levels deep. The output is a Markdown nested bullet list of links to the child pages, which is copied to the system clipboard.
+
+You can then paste that into another page, but pasting it into the same page will mean that regenerating the TOC for that same page will result in every nested child page being seen as a direct decendent of the parent page, as it now contains a link directly to each one, so you'd want to remove it first.
+
+It excludes recursive links back from a child page to its parent, and will stop at 5 levels deep. If it takes more than 5 seconds to process, it will timeout and return an error.
+
+**NOTE:** you may need to explicitly invoke Joplin's file sync so that the workflow picks up any notes that have been created/edited recently.

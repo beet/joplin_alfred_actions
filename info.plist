@@ -34,11 +34,47 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B436058D-472E-483F-8EB0-43208771DE1C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>ED178F56-C39E-4CD9-94D0-587E766621CE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>ED178F56-C39E-4CD9-94D0-587E766621CE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C5C27B06-C97E-4B7F-9DBA-E44D63911DD5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>241E2FE4-4D32-4609-8A3B-9D6D0BB6B082</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -71,6 +107,58 @@
 	<string>Jopliin Actions</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>jtoc</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/joplin"
+
+print Joplin::NotesList.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Generate a table of contents</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>B436058D-472E-483F-8EB0-43208771DE1C</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -126,6 +214,53 @@ print Joplin::WikiLinks.new.json</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>TOC copied to clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>C5C27B06-C97E-4B7F-9DBA-E44D63911DD5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/joplin"
+
+print Joplin::TableOfContents.process(ARGV[0])</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>ED178F56-C39E-4CD9-94D0-587E766621CE</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>autopaste</key>
 				<true/>
 				<key>clipboardtext</key>
@@ -137,6 +272,23 @@ print Joplin::WikiLinks.new.json</string>
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
 			<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>241E2FE4-4D32-4609-8A3B-9D6D0BB6B082</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -344,6 +496,13 @@ print Joplin::NotesList.new.json</string>
 See https://github.com/beet/joplin_alfred_actions for a deatailed readme.</string>
 	<key>uidata</key>
 	<dict>
+		<key>241E2FE4-4D32-4609-8A3B-9D6D0BB6B082</key>
+		<dict>
+			<key>xpos</key>
+			<integer>870</integer>
+			<key>ypos</key>
+			<integer>160</integer>
+		</dict>
 		<key>4181BF5B-700B-4D7E-BC1C-D34DDAC64CB6</key>
 		<dict>
 			<key>xpos</key>
@@ -383,12 +542,33 @@ See https://github.com/beet/joplin_alfred_actions for a deatailed readme.</strin
 			<key>ypos</key>
 			<integer>225</integer>
 		</dict>
+		<key>B436058D-472E-483F-8EB0-43208771DE1C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>440</integer>
+			<key>ypos</key>
+			<integer>45</integer>
+		</dict>
 		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
 		<dict>
 			<key>note</key>
 			<string>Insert a wiki link to any text note with fuzzy search by heading</string>
 			<key>xpos</key>
 			<integer>40</integer>
+			<key>ypos</key>
+			<integer>45</integer>
+		</dict>
+		<key>C5C27B06-C97E-4B7F-9DBA-E44D63911DD5</key>
+		<dict>
+			<key>xpos</key>
+			<integer>865</integer>
+			<key>ypos</key>
+			<integer>45</integer>
+		</dict>
+		<key>ED178F56-C39E-4CD9-94D0-587E766621CE</key>
+		<dict>
+			<key>xpos</key>
+			<integer>640</integer>
 			<key>ypos</key>
 			<integer>45</integer>
 		</dict>
@@ -419,7 +599,7 @@ See https://github.com/beet/joplin_alfred_actions for a deatailed readme.</strin
 		<string>base_directory</string>
 	</array>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/beet/jopin_noteplan_actions</string>
 </dict>

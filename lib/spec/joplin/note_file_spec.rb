@@ -1,6 +1,6 @@
 RSpec.describe Joplin::NoteFile do
   let(:filename) { "foo/bar/#{basename}" }
-  let(:basename) { "#{id}#{Joplin::NoteFile::EXT_NAME}" }
+  let(:basename) { "#{id}#{Joplin::Base::EXT_NAME}" }
   let(:id) { "8775cd41e1d84ac2b631473f88fd8095" }
 
   subject(:note_file) { Joplin::NoteFile.new(filename) }
@@ -87,8 +87,24 @@ RSpec.describe Joplin::NoteFile do
     end
 
     context "when the note file is not metadata or an attachment" do
-      it 'is true' do
-        expect(note_file).to be_is_note
+      before do
+        allow(note_file).to receive(:has_heading?).and_return(has_heading)
+      end
+
+      context "when it does not have a heading" do
+        let(:has_heading) { false }
+
+        it 'is false' do
+          expect(note_file).to_not be_is_note
+        end
+      end
+
+      context "when it has a heading" do
+        let(:has_heading) { true }
+
+        it 'is true' do
+          expect(note_file).to be_is_note
+        end
       end
     end
   end
@@ -106,6 +122,28 @@ RSpec.describe Joplin::NoteFile do
 
     it 'extracts the heading from the file contents with Joplin::NoteComponents::Heading' do
       expect(note_file.heading).to eq(heading_contents)
+    end
+  end
+
+  context "#has_heading?" do
+    before do
+      allow(note_file).to receive(:heading).and_return(heading)
+    end
+
+    context "when the heading has a value" do
+      let(:heading) { "heading" }
+
+      it 'is true' do
+        expect(note_file.has_heading?).to be_truthy
+      end
+    end
+
+    context "when the heading is blank" do
+      let(:heading) { "" }
+
+      it 'is false' do
+        expect(note_file.has_heading?).to be_falsey
+      end
     end
   end
 
@@ -133,6 +171,73 @@ RSpec.describe Joplin::NoteFile do
 
     it 'constructs a Markdown link from the heading and ID' do
       expect(note_file.markdown_link).to eq(markdown_link)
+    end
+  end
+
+  context "#child_notes" do
+    let(:note_contents) { double("note_contents") }
+    let(:note_links_component) { double(Joplin::NoteComponents::NoteLinks, child_notes: child_notes) }
+    let(:child_notes) { double("child_notes") }
+
+    before do
+      allow(note_file).to receive(:contents).and_return(note_contents)
+
+      allow(Joplin::NoteComponents::NoteLinks).to receive(:new).with(note_file.contents).and_return(note_links_component)
+    end
+
+    it 'is a collection of child notes provided by Joplin::NoteComponents::NoteLinks#child_notes' do
+      expect(note_file.child_notes).to eq(child_notes)
+    end
+  end
+
+  context "comparisons" do
+    let(:note1) { Joplin::NoteFile.new("") }
+    let(:note2) { Joplin::NoteFile.new("") }
+
+    context "sort" do
+      before do
+        allow(note1).to receive(:heading).and_return("Zelta")
+        allow(note2).to receive(:heading).and_return("Alpha")
+      end
+
+      it 'uses the note heading' do
+        expect([note1, note2].sort).to eq([note2, note1])
+      end
+    end
+
+    context "equality" do
+      before do
+        allow(note1).to receive(:id).and_return(note1_id)
+        allow(note2).to receive(:id).and_return(note2_id)
+      end
+
+      context "for notes with the same ID" do
+        let(:note1_id) { "123" }
+        let(:note2_id) { "123" }
+
+        it 'is true' do
+          expect(note1 == note2).to eq(true)
+        end
+      end
+
+      context "for notes with different IDs" do
+        let(:note1_id) { "123" }
+        let(:note2_id) { "234" }
+
+        it 'is false' do
+          expect(note1 == note2).to eq(false)
+        end
+      end
+    end
+
+    context "uniqueness" do
+      before do
+        allow(note1).to receive(:id).and_return("123")
+      end
+
+      it 'removes duplicates with the same ID' do
+        expect([note1, note1, note1].uniq).to eq([note1])
+      end
     end
   end
 end

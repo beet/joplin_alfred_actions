@@ -65,7 +65,7 @@ RSpec.describe Joplin::Base do
   end
 
   context "text note iteration" do
-    let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/*.md" }
+    let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/*#{Joplin::Base::EXT_NAME}" }
     let(:note_file) { double(Joplin::NoteFile, filename: filename) }
     let(:filename) { "filename" }
 
